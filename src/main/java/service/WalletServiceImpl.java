@@ -5,35 +5,40 @@ import dao.WalletDaoImpl;
 import dto.Wallet;
 import exception.WalletException;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class WalletServiceImpl implements WalletService {
 
 	private WalletDao walletRepository = new WalletDaoImpl();
-	
-	
+
+
 	public Wallet registerWallet(Wallet newWallet) throws WalletException {
-		
+
 		return this.walletRepository.addWallet(newWallet);
-		
+
 	}
 
 	public Boolean login(Integer walletId, String password) throws WalletException {
 		// TODO Auto-generated method stub
-		try {
-			Wallet gotaccount = walletRepository.getWalletById(walletId);
-			if (Objects.equals(gotaccount.getPassword(), password)) {
-				return true;
-			} else {
-
-				throw new WalletException(super.toString());
+		boolean success = true;
 
 
-			}
-		} catch (WalletException ae) {
+		Wallet gotaccount = walletRepository.getWalletById(walletId);
+		if (Objects.equals(gotaccount.getPassword(), password)) {
+			return success;
+
+		} else {
+
 			throw new WalletException("Password-NotMatch");
-
 		}
+
+
+
+
+
+
+
 	}
 
 	public Double addFundsToWallet(Integer walletId, Double amount) throws WalletException {

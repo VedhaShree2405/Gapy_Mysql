@@ -27,7 +27,7 @@ public class Controller {
 			System.out.println(ws.registerWallet(y));
 			System.out.println(ws.registerWallet(z));
 			System.out.println("Login Account");
-			System.out.println(ws.login(11,"123"));
+			System.out.println(ws.login(11,"1234"));
 			System.out.println("Show Account Balance");
 			System.out.println(ws.showWalletBalance(11));
 			//System.out.println(ws.showWalletBalance(12));
@@ -64,9 +64,9 @@ public class Controller {
 
 			}
 
-		} catch (WalletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (WalletException  a) {
+
+			System.out.println("Password-mis_match");
 		}
 	}
 
